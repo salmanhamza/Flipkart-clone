@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as actionTypes from "../constants/productConstants";
-const URL = "http://localhost:8000";
+const URL = "https://flipkart-server.adaptable.app/";
 
 export const getProducts = () => async (dispatch) => {
   try {
