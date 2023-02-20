@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import { getProductDetails } from "../../redux/actions/productActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Box, Grid, styled, Typography } from "@mui/material";
+import { Box, Grid, styled } from "@mui/material";
 import ActionItems from "./ActionItems";
+import ProductDetail from "./ProductDetail";
 
 const DetailView = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const DetailView = () => {
   const Container = styled(Grid)({
     background: "#fff",
     display: "flex",
+    width: "100%",
   });
   const RightContainer = styled(Grid)({
     marginTop: "50px",
@@ -27,8 +29,6 @@ const DetailView = () => {
   }, [dispatch, id, loading, product]);
 
   console.log(product);
-  const fassured =
-    "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
 
   return (
     <Component>
@@ -37,33 +37,15 @@ const DetailView = () => {
           <Grid item lg={4} md={4} sm={8} xs={12}>
             <ActionItems product={product} />
           </Grid>
-          <RightContainer item lg={4} md={4} sm={8} xs={12}>
-            <Typography>{product.title.longTitle}</Typography>
-            <Typography
-              style={{ marginTop: "5px", color: "#878787", fontSize: "14" }}
-            >
-              81 ratings and 3 reviews
-              <Box component="span">
-                <img
-                  src={fassured}
-                  alt="fassured"
-                  style={{ width: 77, marginLeft: "20px" }}
-                />
-              </Box>
-            </Typography>
-            <Typography>
-              <Box component="span" style={{ fontSize: 28 }}>
-                Rs{product.price.cost}
-              </Box>
-              &nbsp;&nbsp;&nbsp;
-              <Box component="span" style={{ color: "#878787" }}>
-                <strike>{product.price.mrp}</strike>{" "}
-              </Box>
-              &nbsp;&nbsp;&nbsp;
-              <Box component="span" style={{ color: "#388e3c" }}>
-                {product.price.discount}
-              </Box>
-            </Typography>
+          <RightContainer
+            style={{ marginLeft: 30, minWidth: "60%" }}
+            item
+            lg={4}
+            md={4}
+            sm={8}
+            xs={12}
+          >
+            <ProductDetail product={product} />
           </RightContainer>
         </Container>
       )}

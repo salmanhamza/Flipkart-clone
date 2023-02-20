@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:8000";
+const URL = "https://flipkart-server.adaptable.app/";
 
 export const createSignup = async (data) => {
   console.log("data: ", data);

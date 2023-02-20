@@ -16,6 +16,8 @@ Connection();
 
 app.use("/", router);
 
+const port = process.env.PORT
+
 app.listen(process.env.PORT, () => {
   console.log("app is running on port 8000");
 });
